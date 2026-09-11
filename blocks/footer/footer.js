@@ -1,20 +1,54 @@
-import { getMetadata } from '../../scripts/aem.js';
-import { loadFragment } from '../fragment/fragment.js';
-
 /**
  * loads and decorates the footer
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  // load footer as fragment
-  const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
-  const fragment = await loadFragment(footerPath);
+  // metadata-independent dual-fetch: /content first (localhost), then root (DA/EDS prod)
+  let resp = await fetch('/content/footer.plain.html');
+  if (!resp.ok) resp = await fetch('/footer.plain.html');
 
-  // decorate footer DOM
   block.textContent = '';
   const footer = document.createElement('div');
-  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
+  if (resp.ok) {
+    const html = await resp.text();
+    footer.innerHTML = html;
+  }
+
+  // two source sections: link columns (blue band) + legal/social (grey band)
+  const sections = footer.querySelectorAll(':scope > div');
+  if (sections[0]) sections[0].classList.add('footer-columns');
+  if (sections[1]) sections[1].classList.add('footer-legal');
+
+  const legal = sections[1];
+  if (legal) {
+    const lists = legal.querySelectorAll(':scope > ul');
+    if (lists[0]) lists[0].classList.add('footer-legal-links');
+    if (lists[1]) lists[1].classList.add('footer-social');
+
+    // Advertising & Cookies is a consent trigger, not a navigation link
+    const cookieLink = legal.querySelector('a[href="#advertising-cookies"]');
+    if (cookieLink) {
+      cookieLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const consent = document.querySelector('#onetrust-banner-sdk, .ot-sdk-container');
+        if (window.OneTrust && typeof window.OneTrust.ToggleInfoDisplay === 'function') {
+          window.OneTrust.ToggleInfoDisplay();
+        } else if (consent) {
+          consent.scrollIntoView();
+        }
+      });
+    }
+
+    // Back to Top smooth-scrolls to the top of the page
+    const backToTop = legal.querySelector('a[href="#skip-nav"]');
+    if (backToTop) {
+      backToTop.classList.add('footer-back-to-top');
+      backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  }
 
   block.append(footer);
 }
