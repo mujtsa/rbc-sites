@@ -1,0 +1,11 @@
+{
+  "type": "da",
+  "sites": {
+    "rbc-sites": {
+      "previewOrg": "mujtsa",
+      "previewSite": "rbc-sites",
+      "contentHostUrl": "https://content.da.live/mujtsa/rbc-sites/",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+    }
+  }
+}
