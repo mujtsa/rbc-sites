@@ -1,0 +1,64 @@
+/* RBC Search block */
+
+.search .search-form {
+  max-width: 640px;
+}
+
+.search .search-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--rbc-text);
+}
+
+.search .search-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #ccc;
+  border-radius: 24px;
+  padding: 4px 4px 4px 16px;
+  background: #fff;
+}
+
+.search .search-icon {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #666;
+  border-radius: 50%;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.search .search-icon::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  bottom: -4px;
+  width: 7px;
+  height: 2px;
+  background: #666;
+  transform: rotate(45deg);
+}
+
+.search .search-field input {
+  flex: 1;
+  border: 0;
+  outline: none;
+  padding: 10px 0;
+  font-size: var(--body-font-size-xs);
+}
+
+.search .search-field button {
+  border: 0;
+  border-radius: 20px;
+  background: var(--rbc-blue);
+  color: #fff;
+  padding: 10px 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.search .search-field button:hover {
+  background: var(--rbc-link-blue);
+}

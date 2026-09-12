@@ -5,15 +5,40 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  padding: 48px 24px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero h1 {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
   color: var(--background-color);
+}
+
+.hero p {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  color: var(--background-color);
+}
+
+/* RBC CTA button in hero */
+.hero .button-container a.button:any-link {
+  background-color: var(--rbc-blue);
+  color: #fff;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-weight: 500;
+}
+
+.hero .button-container a.button:hover {
+  background-color: var(--rbc-link-blue);
 }
 
 .hero picture {
@@ -22,6 +47,14 @@
   inset: 0;
   object-fit: cover;
   box-sizing: border-box;
+}
+
+/* subtle dark gradient so light hero text stays legible over any image */
+.hero picture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(0 0 0 / 55%) 0%, rgb(0 0 0 / 15%) 60%, rgb(0 0 0 / 0%) 100%);
 }
 
 .hero img {

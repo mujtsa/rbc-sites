@@ -1,0 +1,252 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "bank-accounts",
+      "urls": [
+        "https://www.rbcroyalbank.com/bank-accounts/index.html",
+        "https://www.rbcroyalbank.com/bank-accounts/chequing-accounts.html",
+        "https://www.rbcroyalbank.com/bank-accounts/signature-no-limit-banking.html"
+      ],
+      "representativeUrl": "https://www.rbcroyalbank.com/bank-accounts/index.html",
+      "description": "RBC Bank Accounts pages (hub, listing, product detail) — starter wave",
+      "urlPattern": "/bank-accounts/*",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [
+            "#banner-container div.banner-new-to-rbc",
+            "#banner-container div.banner-student",
+            "#banner-container div.banner-student-international",
+            "#banner-container div.banner-new-to-canada"
+          ]
+        },
+        {
+          "name": "widget",
+          "instances": [
+            "#banner-container div.banner-help-me-choose"
+          ]
+        },
+        {
+          "name": "tabs",
+          "instances": [
+            "#dvl-wpr > main > section.account-list-sec div.acc-type-container"
+          ]
+        },
+        {
+          "name": "cards-account",
+          "instances": [
+            "#dvl-wpr > main > section.account-list-sec div.grid-wpr.eh-wpr"
+          ]
+        },
+        {
+          "name": "cards",
+          "instances": [
+            "#dvl-wpr > main > section.extra-benefits-top div.advantages-container",
+            "#dvl-wpr > main > section.extra-benefits-btm > div.section-inner"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            "#dvl-wpr > main > section.pad-tb-dbl div.grid-wpr.eh-wpr",
+            "#dvl-wpr > main > section.newcomers-content > div.section-inner"
+          ]
+        },
+        {
+          "name": "carousel",
+          "instances": [
+            "#dvl-wpr > main > section.rbc-vantage-sec div.vantage-carousel"
+          ]
+        },
+        {
+          "name": "cards-promo",
+          "instances": [
+            "#dvl-wpr > main > section:nth-of-type(7) div.pbap-benefits"
+          ]
+        },
+        {
+          "name": "accordion",
+          "instances": [
+            "#dvl-wpr > main > section:nth-of-type(9) div.faqs-container div.accordion"
+          ]
+        },
+        {
+          "name": "search",
+          "instances": [
+            "#dvl-wpr > main > section:nth-of-type(9) form#intellResponse_form"
+          ]
+        },
+        {
+          "name": "disclosure",
+          "instances": [
+            "#disclaimer > div.section-inner"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "rc2",
+          "name": "Hero + Account Finder",
+          "selector": [
+            "#banner-container"
+          ],
+          "style": null,
+          "blocks": [
+            "hero",
+            "widget"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc3",
+          "name": "What is a Bank Account",
+          "selector": [
+            "#dvl-wpr > main > div.floating-cta-bnr",
+            "main > div.floating-cta-bnr"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "div.floating-cta-bnr > div.floating-cta-bnr-center"
+          ]
+        },
+        {
+          "id": "rc4",
+          "name": "Apply for a Personal Bank Account",
+          "selector": [
+            "#dvl-wpr > main > section.account-list-sec",
+            "main > section.account-list-sec"
+          ],
+          "style": null,
+          "blocks": [
+            "tabs",
+            "cards-account"
+          ],
+          "defaultContent": [
+            "section.account-list-sec div.bank-acc-header > div:nth-of-type(1)",
+            "section.account-list-sec div.bank-acc-header > div:nth-of-type(2)"
+          ]
+        },
+        {
+          "id": "rc5",
+          "name": "Extra Benefits (Top)",
+          "selector": [
+            "#dvl-wpr > main > section.extra-benefits-top",
+            "main > section.extra-benefits-top"
+          ],
+          "style": null,
+          "blocks": [
+            "cards"
+          ],
+          "defaultContent": [
+            "section.extra-benefits-top > h2"
+          ]
+        },
+        {
+          "id": "rc6",
+          "name": "Extra Benefits (Bottom)",
+          "selector": [
+            "#dvl-wpr > main > section.extra-benefits-btm",
+            "main > section.extra-benefits-btm"
+          ],
+          "style": null,
+          "blocks": [
+            "cards"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc7",
+          "name": "How to Open a Bank Account",
+          "selector": [
+            "#dvl-wpr > main > section.pad-tb-dbl",
+            "main > section.pad-tb-dbl"
+          ],
+          "style": "grey",
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": [
+            "section.pad-tb-dbl > div.section-inner > div:nth-of-type(1)",
+            "section.pad-tb-dbl > div.section-inner > div:nth-of-type(2)"
+          ]
+        },
+        {
+          "id": "rc8",
+          "name": "RBC Vantage",
+          "selector": [
+            "#dvl-wpr > main > section.rbc-vantage-sec",
+            "main > section.rbc-vantage-sec"
+          ],
+          "style": null,
+          "blocks": [
+            "carousel"
+          ],
+          "defaultContent": [
+            "section.rbc-vantage-sec div.desktop-only div.pos-rel > div:first-child"
+          ]
+        },
+        {
+          "id": "rc9",
+          "name": "Get More From Your Everyday Banking",
+          "selector": [
+            "#dvl-wpr > main > section:has(div.best-bank-tile-container)",
+            "#dvl-wpr > main > section:nth-of-type(7)"
+          ],
+          "style": "light",
+          "blocks": [
+            "cards-promo"
+          ],
+          "defaultContent": [
+            "#dvl-wpr > main > section:nth-of-type(7) > div.section-inner > div:nth-of-type(1)",
+            "#dvl-wpr > main > section:nth-of-type(7) div.best-bank-tile-container"
+          ]
+        },
+        {
+          "id": "rc10",
+          "name": "Newcomers Promo Panels",
+          "selector": [
+            "#dvl-wpr > main > section.newcomers-content",
+            "main > section.newcomers-content"
+          ],
+          "style": null,
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc11",
+          "name": "Top Bank Account Questions",
+          "selector": [
+            "#dvl-wpr > main > section:has(div.faqs-container)",
+            "#dvl-wpr > main > section:nth-of-type(9)"
+          ],
+          "style": null,
+          "blocks": [
+            "accordion",
+            "search"
+          ],
+          "defaultContent": [
+            "#dvl-wpr > main > section:nth-of-type(9) div.faqs-container > div:nth-of-type(1)"
+          ]
+        },
+        {
+          "id": "rc12",
+          "name": "Legal Disclaimers",
+          "selector": [
+            "#disclaimer"
+          ],
+          "style": null,
+          "blocks": [
+            "disclosure"
+          ],
+          "defaultContent": []
+        }
+      ]
+    }
+  ]
+}

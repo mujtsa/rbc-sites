@@ -1,0 +1,61 @@
+/* RBC Cards — Promo variant (full-bleed image tiles with overlaid text) */
+
+.cards-promo > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.cards-promo > ul > li {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+}
+
+.cards-promo .cards-card-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  line-height: 0;
+}
+
+.cards-promo .cards-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* dark gradient for text legibility over image */
+.cards-promo > ul > li::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(0deg, rgb(0 0 0 / 70%) 0%, rgb(0 0 0 / 10%) 70%);
+}
+
+.cards-promo .cards-card-body {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 20px;
+}
+
+.cards-promo .cards-card-body h3,
+.cards-promo .cards-card-body h4 {
+  margin: 0 0 8px;
+  color: #fff;
+}
+
+.cards-promo .cards-card-body a:any-link {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: underline;
+}
