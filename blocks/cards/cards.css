@@ -8,12 +8,28 @@
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
+  border: 1px solid var(--rbc-border);
+  border-radius: 4px;
   background-color: var(--background-color);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.cards > ul > li:hover {
+  box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
 }
 
 .cards .cards-card-body {
   margin: 16px;
+}
+
+.cards .cards-card-body h3,
+.cards .cards-card-body h4 {
+  color: var(--rbc-blue);
+}
+
+.cards .cards-card-body a:any-link {
+  color: var(--rbc-link-blue);
 }
 
 .cards .cards-card-image {

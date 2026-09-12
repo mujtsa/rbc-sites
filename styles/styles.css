@@ -16,8 +16,16 @@
   --light-color: #f8f8f8;
   --dark-color: #505050;
   --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --link-color: #006ac3;
+  --link-hover-color: #00478a;
+
+  /* RBC brand tokens */
+  --rbc-blue: #0051a5;
+  --rbc-link-blue: #006ac3;
+  --rbc-footer-grey: #585858;
+  --rbc-text: #252525;
+  --rbc-yellow: #fedf01;
+  --rbc-border: #e6e6e6;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
