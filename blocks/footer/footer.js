@@ -14,6 +14,19 @@ export default async function decorate(block) {
     footer.innerHTML = html;
   }
 
+  // The footer fragment lives at /content/footer.plain.html and references its
+  // assets (social icons, CDIC logo, back-to-top) with paths relative to that
+  // location. Left as-is those resolve against the current page URL and 404 on
+  // nested pages. Rebase any relative asset path to the fragment's own directory
+  // so it resolves from every page.
+  const footerBase = resp.url && resp.url.includes('/content/') ? '/content/' : '/';
+  footer.querySelectorAll('img[src], source[srcset]').forEach((el) => {
+    ['src', 'srcset'].forEach((attr) => {
+      const val = el.getAttribute(attr);
+      if (val && !/^(https?:|\/|data:)/.test(val)) el.setAttribute(attr, `${footerBase}${val}`);
+    });
+  });
+
   // two source sections: link columns (blue band) + legal/social (grey band)
   const sections = footer.querySelectorAll(':scope > div');
   if (sections[0]) sections[0].classList.add('footer-columns');
