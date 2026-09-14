@@ -1,27 +1,45 @@
+/* RBC benefit/feature cards — flat, airy (matches source: no border/shadow) */
 .cards > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+  background-color: transparent;
 }
 
 .cards .cards-card-body {
-  margin: 16px;
+  margin: 0;
+}
+
+.cards .cards-card-body h3,
+.cards .cards-card-body h4 {
+  color: var(--rbc-text);
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+
+.cards .cards-card-body p {
+  color: var(--rbc-text);
+  margin: 0;
+}
+
+.cards .cards-card-body a:any-link {
+  color: var(--rbc-link-blue);
 }
 
 .cards .cards-card-image {
   line-height: 0;
+  margin-bottom: 12px;
 }
 
 .cards > ul > li img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  width: auto;
+  max-width: 100%;
+  height: auto;
 }

@@ -1,0 +1,49 @@
+/* RBC Disclosure system — legal footnotes / references */
+
+.disclosure.block {
+  border-top: 1px solid var(--rbc-border);
+  padding-top: 16px;
+  margin-top: 24px;
+}
+
+.disclosure .disclosure-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: disclosure;
+}
+
+.disclosure .disclosure-item {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: var(--body-font-size-xs);
+  line-height: 1.5;
+  color: var(--dark-color);
+  scroll-margin-top: 180px;
+}
+
+.disclosure .disclosure-item:target {
+  background-color: #fff8d6;
+  outline: 2px solid var(--rbc-yellow);
+  outline-offset: 4px;
+}
+
+.disclosure .disclosure-marker {
+  flex: 0 0 auto;
+  font-weight: 700;
+  color: var(--rbc-text);
+  min-width: 1.2em;
+}
+
+.disclosure .disclosure-body {
+  flex: 1;
+}
+
+.disclosure .disclosure-body p {
+  margin: 0 0 0.5em;
+}
+
+.disclosure .disclosure-body a {
+  color: var(--rbc-link-blue);
+}

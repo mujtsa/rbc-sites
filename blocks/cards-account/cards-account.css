@@ -1,0 +1,88 @@
+/* RBC Cards — Account variant (product cards) */
+
+.cards-account > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.cards-account > ul > li {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--rbc-border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.cards-account .cards-card-body {
+  margin: 0;
+  padding: 16px;
+}
+
+/* first body block acts as the coloured product title band */
+.cards-account .cards-card-body:first-child {
+  background: var(--rbc-blue);
+  color: #fff;
+  padding: 16px;
+}
+
+.cards-account .cards-card-body:first-child h3,
+.cards-account .cards-card-body:first-child h4 {
+  margin: 0;
+  color: #fff;
+}
+
+/* feature checklist */
+.cards-account .cards-card-body ul {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+}
+
+.cards-account .cards-card-body ul li {
+  position: relative;
+  padding-left: 26px;
+  margin-bottom: 8px;
+}
+
+.cards-account .cards-card-body ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 8px;
+  height: 14px;
+  border: solid var(--rbc-blue);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* price emphasis (a strong/heading in the body) */
+.cards-account .cards-card-body strong {
+  font-size: var(--heading-font-size-s);
+  color: var(--rbc-text);
+}
+
+/* CTAs */
+.cards-account .cards-card-body .button-container {
+  margin-top: auto;
+}
+
+.cards-account .cards-card-body a.button:any-link {
+  display: inline-block;
+  background: var(--rbc-blue);
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-weight: 500;
+}
+
+.cards-account .cards-card-body a.button.secondary:any-link {
+  background: transparent;
+  color: var(--rbc-link-blue);
+  border: 1px solid var(--rbc-link-blue);
+}

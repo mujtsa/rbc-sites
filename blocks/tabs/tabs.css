@@ -1,0 +1,58 @@
+/* RBC Tabs — adapted from Block Collection (persona selector) */
+
+.tabs .tabs-list {
+  display: flex;
+  gap: 0;
+  max-width: 100%;
+  font-size: var(--body-font-size-xs);
+  overflow-x: auto;
+  border-bottom: 2px solid var(--rbc-border);
+}
+
+@media (width >= 600px) {
+  .tabs .tabs-list {
+    font-size: var(--body-font-size-s);
+  }
+}
+
+.tabs .tabs-list button {
+  flex: 0 0 max-content;
+  margin: 0;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  padding: 12px 20px;
+  background-color: transparent;
+  color: var(--rbc-text);
+  font-weight: 500;
+  line-height: unset;
+  text-align: initial;
+  text-overflow: unset;
+  overflow: unset;
+  white-space: unset;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tabs .tabs-list button p {
+  margin: 0;
+}
+
+.tabs .tabs-list button:hover {
+  color: var(--rbc-link-blue);
+}
+
+.tabs .tabs-list button[aria-selected='true'] {
+  color: var(--rbc-blue);
+  border-bottom-color: var(--rbc-blue);
+  cursor: initial;
+}
+
+.tabs .tabs-panel {
+  padding: 24px 0;
+  overflow: auto;
+}
+
+.tabs .tabs-panel[aria-hidden='true'] {
+  display: none;
+}
