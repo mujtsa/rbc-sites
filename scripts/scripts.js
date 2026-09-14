@@ -143,6 +143,35 @@ function decorateButtons(main) {
 }
 
 /**
+ * Applies Section Metadata to sections as style classes and removes the block.
+ * The vendored aem.js decorateSections does not process section-metadata, so we
+ * handle it here (project-owned). A metadata table with a `style` row becomes
+ * one or more classes on the section (e.g. "light-blue" -> .section.light-blue);
+ * any other key becomes a data attribute.
+ * @param {Element} main The main element
+ */
+function applySectionMetadata(main) {
+  main.querySelectorAll('.section .section-metadata').forEach((meta) => {
+    const section = meta.closest('.section');
+    if (!section) return;
+    meta.querySelectorAll(':scope > div').forEach((row) => {
+      const cells = row.children;
+      if (cells.length < 2) return;
+      const key = cells[0].textContent.trim().toLowerCase();
+      const value = cells[1].textContent.trim();
+      if (key === 'style') {
+        value.split(',').map((s) => s.trim()).filter(Boolean).forEach((s) => {
+          section.classList.add(s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''));
+        });
+      } else if (key) {
+        section.dataset[key.replace(/[^a-z0-9]+(.)/g, (_, c) => c.toUpperCase())] = value;
+      }
+    });
+    (meta.closest('.section-metadata-wrapper') || meta).remove();
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -151,6 +180,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  applySectionMetadata(main);
   decorateBlocks(main);
   decorateButtons(main);
 }

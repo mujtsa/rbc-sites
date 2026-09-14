@@ -337,3 +337,9 @@ main .section.grey {
   margin: 0;
   padding: 48px 0;
 }
+
+main .section.light-blue {
+  background-color: #e6f0f9;
+  margin: 0;
+  padding: 48px 0;
+}
