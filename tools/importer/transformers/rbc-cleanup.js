@@ -22,6 +22,28 @@ const H = { before: 'beforeTransform', after: 'afterTransform' };
 
 export default function transform(hookName, element, payload) {
   if (hookName === H.before) {
+    // Preserve the product H1 before the sticky product bar (which contains it)
+    // is removed below. The visible product title on RBC product pages lives in
+    // h1#page-title.nav-location inside the sticky wrapper; promote a clean copy
+    // to the top of the document so the migrated page keeps exactly one product H1.
+    const productTitle = element.querySelector('h1#page-title, h1.nav-location');
+    if (productTitle && !element.querySelector('main h1, body > h1')) {
+      const h1 = document.createElement('h1');
+      h1.textContent = productTitle.textContent.trim();
+      const firstSection = element.querySelector('#overview, main, section');
+      if (firstSection) firstSection.prepend(h1);
+      else element.prepend(h1);
+    }
+
+    // Drop RBC responsive DUPLICATES: pages ship a desktop-only and a mobile-only
+    // copy of the same content group (e.g. "Plus Other Features"), which otherwise
+    // both import — one into a block, one as leftover default content. Keep the
+    // desktop copy (block selectors target it); remove the mobile-only twins.
+    WebImporter.DOMUtils.remove(element, [
+      '.block-wpr.mobile-only', // feature groups' mobile duplicate
+      'div.icon-copy-group-wrapper.mobile-only',
+    ]);
+
     // Overlay / off-canvas chrome that could interfere with block parsing.
     WebImporter.DOMUtils.remove(element, [
       '#side-menu-id', // mobile side-menu + search overlay

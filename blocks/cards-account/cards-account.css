@@ -72,13 +72,22 @@
   margin-top: auto;
 }
 
-.cards-account .cards-card-body a.button:any-link {
+/* Primary Open-Account CTA: a standalone link in a card body renders as a
+   prominent button even when the source markup carries no button formatting. */
+.cards-account .cards-card-body a.button:any-link,
+.cards-account .cards-card-body p > a:only-child:any-link {
   display: inline-block;
   background: var(--rbc-blue);
   color: #fff;
   border-radius: 4px;
   padding: 10px 20px;
   font-weight: 500;
+  text-decoration: none;
+}
+
+.cards-account .cards-card-body p > a:only-child:hover {
+  background: var(--rbc-link-blue);
+  color: #fff;
 }
 
 .cards-account .cards-card-body a.button.secondary:any-link {
