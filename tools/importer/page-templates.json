@@ -247,6 +247,474 @@
           "defaultContent": []
         }
       ]
+    },
+    {
+      "name": "chequing-hub",
+      "urls": [
+        "https://www.rbcroyalbank.com/bank-accounts/chequing-accounts/"
+      ],
+      "representativeUrl": "https://www.rbcroyalbank.com/bank-accounts/chequing-accounts/",
+      "description": "RBC Chequing Accounts hub/listing page — chequing wave",
+      "urlPattern": "/bank-accounts/chequing-accounts/",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [
+            "#banner-container div.banner-new-to-rbc"
+          ]
+        },
+        {
+          "name": "widget",
+          "instances": [
+            "#banner-container div.banner-help-me-choose"
+          ]
+        },
+        {
+          "name": "tabs",
+          "instances": [
+            "#dvl-wpr > main > section.our-checking-accounts div.acc-type-container"
+          ]
+        },
+        {
+          "name": "cards-account",
+          "instances": [
+            "#dvl-wpr > main > section.our-checking-accounts div.tiles-container-desktop"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            "#dvl-wpr > main > section:nth-of-type(3) div.col-wpr",
+            "#dvl-wpr > main > section.pad-tb-dbl div.grid-wpr.eh-wpr"
+          ]
+        },
+        {
+          "name": "cards",
+          "instances": [
+            "#dvl-wpr > main > section.is-this-account-right div.col-wpr.eh-wpr"
+          ]
+        },
+        {
+          "name": "carousel",
+          "instances": [
+            "#dvl-wpr > main > section:nth-of-type(6) > div.desktop-only div.vantage-carousel-new-to-rbc"
+          ]
+        },
+        {
+          "name": "cards-promo",
+          "instances": [
+            "#dvl-wpr > main > section:nth-of-type(7) div.pbap-benefits"
+          ]
+        },
+        {
+          "name": "accordion",
+          "instances": [
+            "#dvl-wpr > main > section:nth-of-type(8) div.accordion.faq-content"
+          ]
+        },
+        {
+          "name": "disclosure",
+          "instances": [
+            "#disclaimer > div.section-inner"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "cq1",
+          "name": "Breadcrumb + Page Heading",
+          "selector": [
+            "#dvl-wpr > main > #sticky-wrapper",
+            "#sticky-wrapper"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#sticky-wrapper nav#breadcrumb-wpr",
+            "#sticky-wrapper h1#page-title"
+          ]
+        },
+        {
+          "id": "cq2",
+          "name": "Hero — iPad Offer",
+          "selector": [
+            "#banner-container"
+          ],
+          "style": null,
+          "blocks": [
+            "hero",
+            "widget"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "cq3",
+          "name": "What is a Chequing Account",
+          "selector": [
+            "#dvl-wpr > main > div.floating-cta-bnr",
+            "main > div.floating-cta-bnr"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "div.floating-cta-bnr > div.floating-cta-bnr-center"
+          ]
+        },
+        {
+          "id": "cq4",
+          "name": "Our Chequing Accounts",
+          "selector": [
+            "#dvl-wpr > main > section.our-checking-accounts",
+            "main > section.our-checking-accounts"
+          ],
+          "style": null,
+          "blocks": [
+            "tabs",
+            "cards-account"
+          ],
+          "defaultContent": [
+            "#dvl-wpr > main > section.our-checking-accounts > div.section-inner > h2.text-center"
+          ]
+        },
+        {
+          "id": "cq5",
+          "name": "Chequing Account Guarantee",
+          "selector": [
+            "#dvl-wpr > main > section:nth-of-type(3)"
+          ],
+          "style": "grey",
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": [
+            "#dvl-wpr > main > section:nth-of-type(3) > div.section-inner > h2.text-center"
+          ]
+        },
+        {
+          "id": "cq6",
+          "name": "Not Sure Which Account (Help Options)",
+          "selector": [
+            "#dvl-wpr > main > section.is-this-account-right",
+            "main > section.is-this-account-right"
+          ],
+          "style": null,
+          "blocks": [
+            "cards"
+          ],
+          "defaultContent": [
+            "#dvl-wpr > main > section.is-this-account-right > div.section-inner > h2"
+          ]
+        },
+        {
+          "id": "cq7",
+          "name": "How to Open a Chequing Account",
+          "selector": [
+            "#dvl-wpr > main > section.pad-tb-dbl",
+            "main > section.pad-tb-dbl"
+          ],
+          "style": null,
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": [
+            "#dvl-wpr > main > section.pad-tb-dbl > div.section-inner.pad-tb-dbl > h2.text-center",
+            "#dvl-wpr > main > section.pad-tb-dbl > div.section-inner.pad-tb-dbl > p.text-center"
+          ]
+        },
+        {
+          "id": "cq8",
+          "name": "RBC Vantage",
+          "selector": [
+            "#dvl-wpr > main > section:nth-of-type(6)"
+          ],
+          "style": null,
+          "blocks": [
+            "carousel"
+          ],
+          "defaultContent": [
+            "#dvl-wpr > main > section:nth-of-type(6) div.desktop-only div.pos-rel > div:first-child"
+          ]
+        },
+        {
+          "id": "cq9",
+          "name": "Get More From Your Chequing Account",
+          "selector": [
+            "#dvl-wpr > main > section:nth-of-type(7)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-promo"
+          ],
+          "defaultContent": [
+            "#dvl-wpr > main > section:nth-of-type(7) > div.section-inner > div:nth-of-type(1)",
+            "#dvl-wpr > main > section:nth-of-type(7) div.best-bank-tile-container"
+          ]
+        },
+        {
+          "id": "cq10",
+          "name": "Top Chequing Account Questions",
+          "selector": [
+            "#dvl-wpr > main > section:nth-of-type(8)"
+          ],
+          "style": null,
+          "blocks": [
+            "accordion"
+          ],
+          "defaultContent": [
+            "#dvl-wpr > main > section:nth-of-type(8) > div.section-inner.pad-b.mob-pad-t-0 > div:nth-of-type(1)"
+          ]
+        },
+        {
+          "id": "cq11",
+          "name": "Legal Disclaimers",
+          "selector": [
+            "#disclaimer"
+          ],
+          "style": null,
+          "blocks": [
+            "disclosure"
+          ],
+          "defaultContent": []
+        }
+      ]
+    },
+    {
+      "name": "chequing-product",
+      "urls": [
+        "https://www.rbcroyalbank.com/bank-accounts/chequing-accounts/signature-no-limit-banking.html"
+      ],
+      "representativeUrl": "https://www.rbcroyalbank.com/bank-accounts/chequing-accounts/signature-no-limit-banking.html",
+      "description": "RBC chequing product detail pages (e.g. Signature No Limit Banking) — chequing wave",
+      "urlPattern": "/bank-accounts/chequing-accounts/*",
+      "blocks": [
+        {
+          "name": "cards",
+          "instances": [
+            "#overview div.icon-copy-container div.icon-copy-group.component-bg-2",
+            "#overview div.icon-copy-container div.desktop-only div.icon-copy-group",
+            "#trusted-advisor div.trusted-advisor-container",
+            "#management-and-assistance div.flex-row-gap-overflow"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            "#premium-membership div.points-container",
+            "#pros-and-cons",
+            "#rbc-mobile-app div.section-inner.flex.gap-30",
+            "#safe-with-us div.flex.gap-32.w-full"
+          ]
+        },
+        {
+          "name": "cards-account",
+          "instances": [
+            "#overview div.sticky-card-detail",
+            "#other-chequing-accounts #more-cards-container",
+            "#accounts-opened-together #more-cards-container"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            "#account-features div.table-wpr.features-table"
+          ]
+        },
+        {
+          "name": "accordion",
+          "instances": [
+            "#faqs div.accordion.faq-content"
+          ]
+        },
+        {
+          "name": "disclosure",
+          "instances": [
+            "#disclaimer > div.section-inner"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "cp1",
+          "name": "Breadcrumb + Page Heading",
+          "selector": [
+            "#overview div.sticky-wrapper.product-sticky-wrapper.desktop-only",
+            "#overview div.left-content"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#overview nav#breadcrumb-wpr",
+            "#overview div.left-content > h1#page-title"
+          ]
+        },
+        {
+          "id": "cp2",
+          "name": "Flexibility For Every Way You Bank",
+          "selector": [
+            "#sts",
+            "#overview div#sts"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#sts > div.table-wpr"
+          ]
+        },
+        {
+          "id": "cp3",
+          "name": "Top Chequing Account Benefits",
+          "selector": [
+            "#overview div.icon-copy-container"
+          ],
+          "style": null,
+          "blocks": [
+            "cards"
+          ],
+          "defaultContent": [
+            "#overview div.icon-copy-container > h2.mar-tb-0",
+            "#overview div.icon-copy-container div.desktop-only h2.icon-copy-title"
+          ]
+        },
+        {
+          "id": "cp4",
+          "name": "Avion Rewards Premium Membership",
+          "selector": [
+            "#premium-membership",
+            "#overview div#premium-membership"
+          ],
+          "style": "light-blue",
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": [
+            "#premium-membership > div:first-child"
+          ]
+        },
+        {
+          "id": "cp5",
+          "name": "This Account May / May Not Be Ideal + Pricing Card",
+          "selector": [
+            "#pros-and-cons",
+            "#overview div.flex-wpr"
+          ],
+          "style": null,
+          "blocks": [
+            "columns",
+            "cards-account"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "cp6",
+          "name": "Fees and Other Benefits",
+          "selector": [
+            "#account-features"
+          ],
+          "style": null,
+          "blocks": [
+            "table"
+          ],
+          "defaultContent": [
+            "#account-features > div.section-inner > h2"
+          ]
+        },
+        {
+          "id": "cp7",
+          "name": "Tailored Advice with a Trusted Advisor",
+          "selector": [
+            "#trusted-advisor"
+          ],
+          "style": null,
+          "blocks": [
+            "cards"
+          ],
+          "defaultContent": [
+            "#trusted-advisor h2.text-center"
+          ]
+        },
+        {
+          "id": "cp8",
+          "name": "All Your Banking, in Your Hands (NOMI)",
+          "selector": [
+            "#management-and-assistance"
+          ],
+          "style": "grey",
+          "blocks": [
+            "cards"
+          ],
+          "defaultContent": [
+            "#management-and-assistance h2.text-center"
+          ]
+        },
+        {
+          "id": "cp9",
+          "name": "RBC Mobile App",
+          "selector": [
+            "#rbc-mobile-app"
+          ],
+          "style": null,
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "cp10",
+          "name": "How We Keep Your Money Safe",
+          "selector": [
+            "#safe-with-us"
+          ],
+          "style": null,
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": [
+            "#safe-with-us > div.section-inner > h2"
+          ]
+        },
+        {
+          "id": "cp11",
+          "name": "Explore Other Chequing Accounts + Opened Together",
+          "selector": [
+            "#other-chequing-accounts"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-account"
+          ],
+          "defaultContent": [
+            "#other-chequing-accounts > div.section-inner.pad-b > div:nth-of-type(1)",
+            "#need-help-deciding",
+            "#accounts-opened-together > div.section-inner.pad-b > div:nth-of-type(1)"
+          ]
+        },
+        {
+          "id": "cp12",
+          "name": "Frequently Asked Questions",
+          "selector": [
+            "#faqs"
+          ],
+          "style": null,
+          "blocks": [
+            "accordion"
+          ],
+          "defaultContent": [
+            "#faqs h2.text-center"
+          ]
+        },
+        {
+          "id": "cp13",
+          "name": "Legal Disclaimers",
+          "selector": [
+            "#disclaimer"
+          ],
+          "style": null,
+          "blocks": [
+            "disclosure"
+          ],
+          "defaultContent": []
+        }
+      ]
     }
   ]
 }
