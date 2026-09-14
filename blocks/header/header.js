@@ -161,6 +161,19 @@ export default async function decorate(block) {
     fragment = await loadFragment('/nav');
   }
 
+  // The nav fragment lives at /content/nav.plain.html and references its assets
+  // with paths relative to that location (e.g. images/rbc-logo-shield.svg). Left
+  // as-is those resolve against the *current* page URL and 404 on nested pages
+  // (the RBC logo shows a broken placeholder). Rebase any relative asset path to
+  // the fragment's own directory so it resolves from every page.
+  const navBase = resp.url && resp.url.includes('/content/') ? '/content/' : '/';
+  fragment.querySelectorAll('img[src], source[srcset]').forEach((el) => {
+    ['src', 'srcset'].forEach((attr) => {
+      const val = el.getAttribute(attr);
+      if (val && !/^(https?:|\/|data:)/.test(val)) el.setAttribute(attr, `${navBase}${val}`);
+    });
+  });
+
   block.textContent = '';
   const nav = document.createElement('nav');
   nav.id = 'nav';

@@ -6,6 +6,7 @@
   --rbc-blue: rgb(0 81 165);
   --rbc-link-blue: rgb(0 106 195);
   --rbc-text: rgb(37 37 37);
+  --rbc-yellow: #fedf01;
   --rbc-nav-height: 60px;
 }
 
@@ -77,7 +78,7 @@ header nav .nav-brand a {
 }
 
 header nav .nav-brand img {
-  width: 34px;
+  width: 42px;
   height: auto;
 }
 
@@ -292,8 +293,9 @@ header nav .nav-search-form button {
 
 header nav .nav-signin {
   display: inline-block;
-  background: var(--rbc-blue);
-  color: #fff !important;
+  background: var(--rbc-yellow, #fedf01);
+  color: var(--rbc-text) !important;
+  font-weight: 500;
   border-radius: 4px;
   padding: 10px 20px !important;
   margin: 8px 16px;
@@ -307,15 +309,25 @@ header nav .nav-signin {
     flex-direction: column;
     padding: 0;
     position: relative;
+
+    /* subtle light-blue band behind the brand row (row 1), like production */
+    background:
+      linear-gradient(var(--rbc-brand-band, #eaf1fa), var(--rbc-brand-band, #eaf1fa)) no-repeat 0 30px / 100% 70px;
   }
 
-  /* row 0 — blue utility / audience bar (full-bleed, first) */
+  /* row 0 — blue utility / audience bar (full-bleed, first).
+     As a flex item it would shrink to content width, so pin it to the full
+     viewport with a centering transform to guarantee edge-to-edge blue. */
   header nav .nav-audience {
     order: 1;
     display: block;
     background: var(--rbc-blue);
-    margin: 0 calc(50% - 50vw);
-    padding: 0 calc(50vw - 632px);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 0;
   }
 
   header nav .nav-audience > ul {
@@ -323,9 +335,11 @@ header nav .nav-signin {
     align-items: center;
     justify-content: flex-end;
     gap: 20px;
+    width: 100%;
     max-width: 1264px;
     margin: 0 auto;
     padding: 0 16px;
+    box-sizing: border-box;
     height: 30px;
   }
 
@@ -365,7 +379,7 @@ header nav .nav-signin {
     padding: 8px 16px;
   }
 
-  /* row 1 — brand + tools */
+  /* row 1 — brand + tools (sits on a subtle light-blue band like production) */
   header nav .nav-brand {
     order: 2;
     max-width: 1264px;
@@ -475,8 +489,8 @@ header nav .nav-signin {
   header nav .nav-sections > ul > li > a {
     padding: 0 14px;
     font-size: 16px;
-    font-weight: 500;
-    color: var(--rbc-text);
+    font-weight: 400;
+    color: var(--rbc-link-blue);
     display: flex;
     align-items: center;
     gap: 6px;
@@ -487,6 +501,25 @@ header nav .nav-signin {
     width: 16px;
     height: 16px;
   }
+
+  /* "More services": production shows only the vertical-ellipsis icon (no text
+     label) preceded by a divider. Keep the text accessible but hidden. */
+  header nav .nav-sections > ul > li:last-child {
+    border-left: 1px solid #e6e6e6;
+    margin-left: 4px;
+  }
+
+  header nav .nav-sections > ul > li:last-child > a {
+    font-size: 0;
+    gap: 0;
+  }
+
+  header nav .nav-sections > ul > li:last-child > a img {
+    width: 20px;
+    height: 20px;
+  }
+
+  header nav .nav-sections > ul > li:last-child.nav-drop > a::after { display: none; }
 
   header nav .nav-sections > ul > li.nav-drop > a::after {
     content: '';
