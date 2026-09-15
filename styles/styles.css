@@ -361,3 +361,43 @@ main > .section:first-of-type .default-content-wrapper p:has(> picture:only-chil
 main > .section:first-of-type .default-content-wrapper img {
   border-radius: 8px;
 }
+
+/* Product hero: intro content on the left, product summary rail on the right,
+   matching the source product-page layout. Built in scripts.js (buildProductHero).
+   Mobile-first: single column (rail stacks under the intro). */
+.section.product-hero > .product-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.section.product-hero .product-hero-rail .cards-account > ul {
+  grid-template-columns: 1fr;
+}
+
+@media (width >= 900px) {
+  .section.product-hero > .product-hero-grid {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* the rail's cards stack vertically into one continuous product panel */
+  .section.product-hero .product-hero-rail .cards-account > ul {
+    grid-template-columns: 1fr;
+    gap: 0;
+    border: 1px solid var(--rbc-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .section.product-hero .product-hero-rail .cards-account > ul > li {
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid var(--rbc-border);
+  }
+
+  .section.product-hero .product-hero-rail .cards-account > ul > li:last-child {
+    border-bottom: 0;
+  }
+}

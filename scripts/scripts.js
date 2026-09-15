@@ -172,6 +172,44 @@ function applySectionMetadata(main) {
 }
 
 /**
+ * Builds the RBC product hero: a two-column layout with the intro content on
+ * the left and the product summary rail (card image, offer, monthly-fee box,
+ * Open Account CTA) on the right, matching the source product-page design.
+ *
+ * Content-first and defensive: it only fires when the page has a `.cards-account`
+ * rail whose CTA is an "Open Account" link (i.e. a product detail page). On any
+ * other page it is a no-op, so it is safe to run for every template.
+ * @param {Element} main The main element
+ */
+function buildProductHero(main) {
+  // the product rail is the cards-account block whose CTA opens an account —
+  // this distinguishes it from "other accounts" comparison rails (View Account).
+  const rail = [...main.querySelectorAll('.cards-account')]
+    .find((el) => [...el.querySelectorAll('a')].some((a) => /open account/i.test(a.textContent)));
+  if (!rail) return;
+
+  const firstSection = main.querySelector(':scope > .section');
+  if (!firstSection || firstSection.contains(rail)) return;
+
+  // the intro section's content wrapper becomes the left column
+  const introWrapper = firstSection.querySelector(':scope > div');
+  if (!introWrapper) return;
+
+  const grid = document.createElement('div');
+  grid.className = 'product-hero-grid';
+  const mainCol = document.createElement('div');
+  mainCol.className = 'product-hero-main';
+  const railCol = document.createElement('div');
+  railCol.className = 'product-hero-rail';
+
+  mainCol.append(introWrapper);
+  railCol.append(rail.closest('.cards-account-wrapper') || rail);
+  grid.append(mainCol, railCol);
+  firstSection.append(grid);
+  firstSection.classList.add('product-hero');
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -183,6 +221,7 @@ export function decorateMain(main) {
   applySectionMetadata(main);
   decorateBlocks(main);
   decorateButtons(main);
+  buildProductHero(main);
 }
 
 /**
