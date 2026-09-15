@@ -179,6 +179,18 @@ export default async function decorate(block) {
   nav.id = 'nav';
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
 
+  // Normalize markup: the DA/EDS content bus wraps a standalone link on its own
+  // line in a <p> (`<li><p><a>…</a></p><ul>…`), while the local preview keeps the
+  // link as a direct <li> child. The nav CSS and dropdown JS both expect
+  // `li > a`, so unwrap any <p> in a nav <li> that wraps a single link — making
+  // both environments render identically.
+  nav.querySelectorAll('li > p').forEach((p) => {
+    const links = p.querySelectorAll('a');
+    if (links.length === 1 && p.textContent.trim() === links[0].textContent.trim()) {
+      p.replaceWith(links[0]);
+    }
+  });
+
   // four source sections: brand, audience bar, tools, main mega nav
   const classes = ['brand', 'audience', 'tools', 'sections'];
   classes.forEach((c, i) => {
