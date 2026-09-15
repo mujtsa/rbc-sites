@@ -15,7 +15,7 @@
   --background-color: white;
   --light-color: #f8f8f8;
   --dark-color: #505050;
-  --text-color: #131313;
+  --text-color: #252525; /* RBC body text is a soft charcoal, not near-black */
   --link-color: #006ac3;
   --link-hover-color: #00478a;
 
@@ -65,10 +65,10 @@
 
 @media (width >= 900px) {
   :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
+    /* body sizes — matched to RBC production (base body 16px) */
+    --body-font-size-m: 16px;
+    --body-font-size-s: 14px;
+    --body-font-size-xs: 13px;
 
     /* heading sizes — matched to RBC production (H1 40px, H2 24px, H3 20px) */
     --heading-font-size-xxl: 40px;
@@ -87,7 +87,8 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  font-weight: 300; /* RBC body copy is light-weight */
+  line-height: 1.5;
 }
 
 body.appear {
@@ -122,9 +123,9 @@ h6 {
   scroll-margin: 40px;
 }
 
-/* RBC uses brand blue for the primary product heading */
+/* RBC uses its link-blue (#006ac3) for the primary product heading */
 h1 {
-  color: var(--rbc-blue);
+  color: var(--rbc-link-blue);
   font-size: var(--heading-font-size-xxl);
 }
 h2 { font-size: var(--heading-font-size-xl); }
