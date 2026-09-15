@@ -1,4 +1,7 @@
-/* RBC Table — adapted from Block Collection (fees & feature tables) */
+/* RBC Table — matched to the production "Fees and Other Benefits" feature/value table
+   (.features-table on rbcroyalbank.com). Values from source computed styles:
+   outer 1px hairline border, zebra rows (#edf7fc), 20px cell padding, 16px --rbc-text,
+   RBC-blue links, subtle header (no heavy bar). */
 
 .table.block {
   width: 100%;
@@ -8,39 +11,60 @@
 .table.block table {
   width: 100%;
   max-width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid rgb(0 0 0 / 10%);
   font-size: var(--body-font-size-xs);
+  line-height: 1.5;
 }
 
-@media (width >= 600px) {
+/* mobile-first: slightly larger for readability, tightened at desktop to source 16px */
+@media (width >= 900px) {
   .table.block table {
     font-size: var(--body-font-size-s);
   }
 }
 
-@media (width >= 900px) {
-  .table.block table {
-    font-size: var(--body-font-size-xs);
-  }
-}
-
+/* subtle header — no dark bar; light tint + medium weight to separate from body */
 .table.block table thead tr {
-  background-color: var(--rbc-blue);
-  color: #fff;
-}
-
-.table.block table tbody tr {
-  border-bottom: 1px solid var(--rbc-border);
+  background-color: var(--light-color);
 }
 
 .table.block table th {
-  font-weight: 700;
+  font-weight: 500;
+  color: var(--rbc-text);
+  border-bottom: 1px solid rgb(0 0 0 / 10%);
+}
+
+/* zebra striping — first body row is tinted, matching source .table-row.blue */
+.table.block table tbody tr:nth-child(odd) {
+  background-color: #edf7fc;
 }
 
 .table.block table th,
 .table.block table td {
-  padding: 12px 16px;
+  padding: 12px 14px;
+  color: var(--rbc-text);
   text-align: left;
+  vertical-align: middle;
+  overflow-wrap: break-word;
+}
+
+@media (width >= 900px) {
+  .table.block table th,
+  .table.block table td {
+    padding: 20px;
+  }
+
+  /* source feature column ≈ 40% of table width */
+  .table.block table th:first-child,
+  .table.block table td:first-child {
+    width: 40%;
+  }
+}
+
+.table.block table a:any-link {
+  color: var(--rbc-link-blue);
 }
 
 .table table th p,
@@ -52,17 +76,17 @@
   margin-top: 0.25em;
 }
 
-/* no header variant */
-.table.block.no-header table tbody tr {
-  border-top: 1px solid var(--rbc-border);
+/* striped variant is now the default look; keep selector as an explicit alias */
+.table.block.striped tbody tr:nth-child(odd) {
+  background-color: #edf7fc;
 }
 
-/* striped variant */
-.table.block.striped tbody tr:nth-child(even) {
-  background-color: var(--light-color);
+/* no-header variant: keep top hairline so first row reads as bordered */
+.table.block.no-header table tbody tr:first-child {
+  border-top: 1px solid rgb(0 0 0 / 10%);
 }
 
-/* bordered variant */
+/* bordered variant: add cell gridlines on top of the base */
 .table.block.bordered table th,
 .table.block.bordered table td {
   border: 1px solid var(--rbc-border);

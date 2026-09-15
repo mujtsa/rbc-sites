@@ -1,10 +1,17 @@
 .columns > div {
   display: flex;
   flex-direction: column;
+  gap: 32px;
 }
 
+/* Decorative icons, logos and illustrations sit inline within the text cells
+   on this content. Keep them at their natural size (capped to the column
+   width) instead of stretching to 100% — matches the RBC source where these
+   render as small icon/illustration marks, not full-width images. */
 .columns img {
-  width: 100%;
+  width: auto;
+  height: auto;
+  max-width: 100%;
 }
 
 .columns > div > div {
@@ -15,15 +22,25 @@
   order: 0;
 }
 
+/* A picture that is the ONLY content of a cell is a genuine image column and
+   should fill its column. */
 .columns > div > .columns-img-col img {
   display: block;
+  width: 100%;
+}
+
+/* RBC source uses its dark brand text colour (#252525) for the headings inside
+   these columns groupings. */
+.columns h2,
+.columns h3 {
+  color: var(--rbc-text);
 }
 
 @media (width >= 900px) {
   .columns > div {
-    align-items: center;
+    align-items: flex-start;
     flex-direction: unset;
-    gap: 24px;
+    gap: 30px;
   }
 
   .columns > div > div {
