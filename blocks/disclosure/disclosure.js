@@ -30,6 +30,7 @@ function slugForMarker(marker) {
 export default function decorate(block) {
   const list = document.createElement('ol');
   list.className = 'disclosure-list';
+  list.id = 'legal-disclaimers';
 
   [...block.children].forEach((row) => {
     const cells = [...row.children];
@@ -54,5 +55,44 @@ export default function decorate(block) {
     list.append(item);
   });
 
-  block.replaceChildren(list);
+  // RBC hides the detailed legal text behind a View/Hide Legal Disclaimers
+  // control (collapsed by default). Reproduce that toggle while keeping the
+  // list in the DOM so in-page superscript links (#legal-N) still resolve.
+  const panel = document.createElement('div');
+  panel.className = 'disclosure-panel';
+  panel.id = 'disclaimers';
+  panel.hidden = true;
+  panel.append(list);
+
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'disclosure-toggle';
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-controls', 'disclaimers');
+  const setLabel = (open) => { toggle.textContent = open ? 'Hide Legal Disclaimers' : 'View Legal Disclaimers'; };
+  setLabel(false);
+
+  const setOpen = (open) => {
+    panel.hidden = !open;
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    setLabel(open);
+  };
+
+  toggle.addEventListener('click', () => setOpen(panel.hidden));
+
+  // If the page is (or becomes) targeting a specific disclaimer via the hash
+  // (e.g. a superscript "#legal-2" link), open the panel and scroll to it.
+  const openIfTargeted = () => {
+    const { hash } = window.location;
+    if (!hash) return;
+    const target = block.querySelector(hash) || (hash === '#disclaimers' ? panel : null);
+    if (target) {
+      setOpen(true);
+      requestAnimationFrame(() => target.scrollIntoView({ block: 'center' }));
+    }
+  };
+  window.addEventListener('hashchange', openIfTargeted);
+
+  block.replaceChildren(toggle, panel);
+  openIfTargeted();
 }

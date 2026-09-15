@@ -6,6 +6,46 @@
   margin-top: 24px;
 }
 
+/* View / Hide Legal Disclaimers toggle (RBC hides the detail by default) */
+.disclosure .disclosure-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--rbc-link-blue);
+  font: inherit;
+  font-size: var(--body-font-size-s);
+  cursor: pointer;
+}
+
+.disclosure .disclosure-toggle:hover {
+  text-decoration: underline;
+}
+
+.disclosure .disclosure-toggle::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentcolor;
+  border-bottom: 2px solid currentcolor;
+  transform: rotate(45deg) translateY(-1px);
+  transition: transform 0.2s ease;
+}
+
+.disclosure .disclosure-toggle[aria-expanded='true']::after {
+  transform: rotate(-135deg);
+}
+
+.disclosure .disclosure-panel {
+  margin-top: 16px;
+}
+
+.disclosure .disclosure-panel[hidden] {
+  display: none;
+}
+
 .disclosure .disclosure-list {
   list-style: none;
   margin: 0;
