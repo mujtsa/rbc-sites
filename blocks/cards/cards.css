@@ -21,12 +21,20 @@
   color: var(--rbc-text);
   font-size: 18px;
   font-weight: 500;
-  margin: 0 0 8px;
+  line-height: 28px;
+  margin: 0 0 2px;
 }
 
 .cards .cards-card-body p {
   color: var(--rbc-text);
+  font-size: 16px;
+  line-height: 24px;
   margin: 0;
+}
+
+/* Empty image cell (no icon imported) should not reserve space */
+.cards .cards-card-body:empty {
+  display: none;
 }
 
 .cards .cards-card-body a:any-link {

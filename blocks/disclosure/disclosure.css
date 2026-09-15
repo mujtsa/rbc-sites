@@ -16,10 +16,11 @@
 .disclosure .disclosure-item {
   display: flex;
   gap: 8px;
-  margin-bottom: 12px;
-  font-size: var(--body-font-size-xs);
-  line-height: 1.5;
-  color: var(--dark-color);
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.43;
+  color: var(--rbc-footer-grey);
   scroll-margin-top: 180px;
 }
 
@@ -31,9 +32,10 @@
 
 .disclosure .disclosure-marker {
   flex: 0 0 auto;
-  font-weight: 700;
-  color: var(--rbc-text);
+  font-weight: 300;
+  color: var(--rbc-footer-grey);
   min-width: 1.2em;
+  text-align: right;
 }
 
 .disclosure .disclosure-body {

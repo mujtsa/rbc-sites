@@ -1,97 +1,143 @@
-/* RBC Cards — Account variant (product cards) */
+/* RBC Cards — Account variant (product summary / offer + comparison cards) */
 
+/* mobile-first: single column, cards stack */
 .cards-account > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
   gap: 24px;
 }
 
+@media (width >= 900px) {
+  .cards-account > ul {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+/* every card: white, thin border, rounded corners */
 .cards-account > ul > li {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--rbc-border);
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
   background: #fff;
-}
-
-.cards-account .cards-card-body {
-  margin: 0;
-  padding: 16px;
-}
-
-/* first body block acts as the coloured product title band */
-.cards-account .cards-card-body:first-child {
-  background: var(--rbc-blue);
-  color: #fff;
-  padding: 16px;
-}
-
-.cards-account .cards-card-body:first-child h3,
-.cards-account .cards-card-body:first-child h4 {
-  margin: 0;
-  color: #fff;
-}
-
-/* feature checklist */
-.cards-account .cards-card-body ul {
-  list-style: none;
-  margin: 0 0 12px;
-  padding: 0;
-}
-
-.cards-account .cards-card-body ul li {
-  position: relative;
-  padding-left: 26px;
-  margin-bottom: 8px;
-}
-
-.cards-account .cards-card-body ul li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 3px;
-  width: 8px;
-  height: 14px;
-  border: solid var(--rbc-blue);
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-/* price emphasis (a strong/heading in the body) */
-.cards-account .cards-card-body strong {
-  font-size: var(--heading-font-size-s);
   color: var(--rbc-text);
 }
 
-/* CTAs */
-.cards-account .cards-card-body .button-container {
-  margin-top: auto;
+.cards-account .cards-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 20px 24px;
 }
 
-/* Primary Open-Account CTA: a standalone link in a card body renders as a
-   prominent button even when the source markup carries no button formatting. */
+.cards-account .cards-card-body > p {
+  margin: 0;
+}
+
+/* centred product imagery (debit card, iPad offer image) */
+.cards-account .cards-card-body img {
+  max-width: 100%;
+  height: auto;
+}
+
+.cards-account .cards-card-body p:has(> picture),
+.cards-account .cards-card-body picture {
+  display: flex;
+  justify-content: center;
+}
+
+/* inline / footnote links inside card bodies keep the RBC link colour */
+.cards-account .cards-card-body a:any-link {
+  color: var(--rbc-link-blue);
+}
+
+/* product / card name — first text line of a card */
+.cards-account .cards-card-body > p:first-child {
+  font-size: var(--body-font-size-m);
+  font-weight: 500;
+  color: var(--rbc-text);
+}
+
+/* Push the CTA (always the last paragraph of a card) to the card bottom */
+.cards-account .cards-card-body > p:last-child:has(> a:only-child) {
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+/* ---- Comparison cards (2-card blocks: name / label / price / CTA) ---- */
+
+/* "Monthly fee" / "Annual fee" label */
+.cards-account > ul:not(:has(li:nth-child(3))) .cards-card-body > p:nth-child(2) {
+  font-size: var(--body-font-size-xs);
+  color: var(--dark-color);
+}
+
+/* fee value (emphasised) */
+.cards-account > ul:not(:has(li:nth-child(3))) .cards-card-body > p:nth-child(3) {
+  font-size: var(--heading-font-size-l);
+  font-weight: 300;
+  color: var(--rbc-text);
+}
+
+/* ---- Offer rail (the 4-card product summary; ul has a 3rd/4th card) ---- */
+
+/* CHEQUING caption pill in the product-image card */
+.cards-account > ul:has(li:nth-child(3)) > li:first-child .cards-card-body {
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.cards-account > ul:has(li:nth-child(3)) > li:first-child .cards-card-body > p:last-child {
+  align-self: flex-start;
+  border: 1px solid var(--rbc-border);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: var(--heading-font-size-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* SPECIAL OFFER badge (yellow accent) — first line of the offer card */
+.cards-account > ul:has(li:nth-child(3)) > li:nth-child(2) .cards-card-body > p:first-child {
+  align-self: flex-start;
+  background: var(--rbc-yellow);
+  border-radius: 2px;
+  padding: 3px 8px;
+  font-size: var(--heading-font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #000;
+}
+
+/* ---- CTAs ---- */
+
+/* Primary CTA: a lone link that forms the card's final paragraph renders as an
+   RBC-blue button even when the source markup carries no button formatting.
+   Scoped to the last paragraph so inline footnote/legal links (which are the
+   only ELEMENT child of their paragraph but sit among text) stay plain links. */
 .cards-account .cards-card-body a.button:any-link,
-.cards-account .cards-card-body p > a:only-child:any-link {
+.cards-account .cards-card-body > p:last-child > a:only-child:any-link {
   display: inline-block;
+  align-self: flex-start;
   background: var(--rbc-blue);
-  color: #fff;
   border-radius: 4px;
   padding: 10px 20px;
+  font-size: var(--body-font-size-s);
   font-weight: 500;
+  line-height: 1.2;
   text-decoration: none;
-}
-
-.cards-account .cards-card-body p > a:only-child:hover {
-  background: var(--rbc-link-blue);
   color: #fff;
 }
 
-.cards-account .cards-card-body a.button.secondary:any-link {
-  background: transparent;
-  color: var(--rbc-link-blue);
-  border: 1px solid var(--rbc-link-blue);
+.cards-account .cards-card-body a.button:any-link:hover,
+.cards-account .cards-card-body > p:last-child > a:only-child:any-link:hover {
+  background: var(--rbc-link-blue);
+  color: #fff;
 }
